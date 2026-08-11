@@ -1,8 +1,9 @@
 export function getApiBaseUrl(): string {
   const codespaceName = import.meta.env.VITE_CODESPACE_NAME;
+  const normalized = codespaceName?.trim();
 
-  if (codespaceName && codespaceName.trim()) {
-    return `https://${codespaceName.trim()}-8000.app.github.dev`;
+  if (normalized && normalized !== 'your-codespace-name' && !normalized.startsWith('undefined')) {
+    return `https://${normalized}-8000.app.github.dev`;
   }
 
   return 'http://localhost:8000';

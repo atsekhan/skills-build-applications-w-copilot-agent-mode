@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { getApiUrl, normalizeListResponse } from '../lib/api';
+import { getApiBaseUrl, normalizeListResponse } from '../lib/api';
 
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const usersUrl = `${getApiBaseUrl()}/api/users/`;
 
   useEffect(() => {
     const loadUsers = async () => {
       try {
-        const response = await fetch(getApiUrl('users'));
+        const response = await fetch(usersUrl);
         if (!response.ok) {
           throw new Error(`Failed to fetch users (${response.status})`);
         }

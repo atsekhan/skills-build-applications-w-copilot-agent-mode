@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { getApiUrl, normalizeListResponse } from '../lib/api';
+import { getApiBaseUrl, normalizeListResponse } from '../lib/api';
 
 export default function Leaderboard() {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const leaderboardUrl = `${getApiBaseUrl()}/api/leaderboard/`;
 
   useEffect(() => {
     const loadLeaderboard = async () => {
       try {
-        const response = await fetch(getApiUrl('leaderboard'));
+        const response = await fetch(leaderboardUrl);
         if (!response.ok) {
           throw new Error(`Failed to fetch leaderboard (${response.status})`);
         }

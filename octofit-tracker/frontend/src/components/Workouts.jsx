@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { getApiUrl, normalizeListResponse } from '../lib/api';
+import { getApiBaseUrl, normalizeListResponse } from '../lib/api';
 
 export default function Workouts() {
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const workoutsUrl = `${getApiBaseUrl()}/api/workouts/`;
 
   useEffect(() => {
     const loadWorkouts = async () => {
       try {
-        const response = await fetch(getApiUrl('workouts'));
+        const response = await fetch(workoutsUrl);
         if (!response.ok) {
           throw new Error(`Failed to fetch workouts (${response.status})`);
         }

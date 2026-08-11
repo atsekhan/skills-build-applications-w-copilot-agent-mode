@@ -1,15 +1,16 @@
 import { useEffect, useState } from 'react';
-import { getApiUrl, normalizeListResponse } from '../lib/api';
+import { getApiBaseUrl, normalizeListResponse } from '../lib/api';
 
 export default function Teams() {
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const teamsUrl = `${getApiBaseUrl()}/api/teams/`;
 
   useEffect(() => {
     const loadTeams = async () => {
       try {
-        const response = await fetch(getApiUrl('teams'));
+        const response = await fetch(teamsUrl);
         if (!response.ok) {
           throw new Error(`Failed to fetch teams (${response.status})`);
         }
