@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getApiBaseUrl, normalizeListResponse } from '../lib/api';
 
+const usersUrl = `${getApiBaseUrl()}-8000.app.github.dev/api/users/`;
+
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const usersUrl = `${getApiBaseUrl()}/api/users/`;
 
   useEffect(() => {
     const loadUsers = async () => {

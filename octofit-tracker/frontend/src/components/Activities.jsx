@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getApiBaseUrl, normalizeListResponse } from '../lib/api';
 
+const activitiesUrl = `${getApiBaseUrl()}-8000.app.github.dev/api/activities/`;
+
 export default function Activities() {
   const [activities, setActivities] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const activitiesUrl = `${getApiBaseUrl()}/api/activities/`;
 
   useEffect(() => {
     const loadActivities = async () => {

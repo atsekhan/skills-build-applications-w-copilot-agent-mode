@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getApiBaseUrl, normalizeListResponse } from '../lib/api';
 
+const leaderboardUrl = `${getApiBaseUrl()}-8000.app.github.dev/api/leaderboard/`;
+
 export default function Leaderboard() {
   const [entries, setEntries] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const leaderboardUrl = `${getApiBaseUrl()}/api/leaderboard/`;
 
   useEffect(() => {
     const loadLeaderboard = async () => {

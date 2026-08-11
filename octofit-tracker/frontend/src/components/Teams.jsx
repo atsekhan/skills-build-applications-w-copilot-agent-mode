@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getApiBaseUrl, normalizeListResponse } from '../lib/api';
 
+const teamsUrl = `${getApiBaseUrl()}-8000.app.github.dev/api/teams/`;
+
 export default function Teams() {
   const [teams, setTeams] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const teamsUrl = `${getApiBaseUrl()}/api/teams/`;
 
   useEffect(() => {
     const loadTeams = async () => {

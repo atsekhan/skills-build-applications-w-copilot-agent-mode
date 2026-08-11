@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
 import { getApiBaseUrl, normalizeListResponse } from '../lib/api';
 
+const workoutsUrl = `${getApiBaseUrl()}-8000.app.github.dev/api/workouts/`;
+
 export default function Workouts() {
   const [workouts, setWorkouts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
-  const workoutsUrl = `${getApiBaseUrl()}/api/workouts/`;
 
   useEffect(() => {
     const loadWorkouts = async () => {
